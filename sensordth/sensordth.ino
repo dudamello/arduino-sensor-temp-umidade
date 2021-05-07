@@ -1,4 +1,3 @@
-
 #include <DHT.h>                        //Inclui a bilbioteca DHT
 #include <DHT_U.h>
 #include <Adafruit_Sensor.h>            //Inclui a biblioteca Adafruit
@@ -17,15 +16,16 @@ byte grau[8] ={ B00001100,              //Montagem do simbolo "grau"
                 B00000000,              //Montagem do simbolo "grau"
                 B00000000,};            //Montagem do simbolo "grau"
 
-void setup() {
-
- lcd.begin(16,2);                       //Inicializa o LCD e especifica sua dimensao
- lcd.clear();                           //Limpa o LCD
- lcd.createChar(0, grau);               //Cria o caractere de grau
- dht.begin();                           //Inicializa o DHT
+void setup() 
+{
+  lcd.begin(16,2);                       //Inicializa o LCD e especifica sua dimensao
+  lcd.clear();                           //Limpa o LCD
+  lcd.createChar(0, grau);               //Cria o caractere de grau
+  dht.begin();                           //Inicializa o DHT
 }
 
-void loop() {
+void loop() 
+{
   float t = dht.readTemperature();      //Leitura do valor de temperatura
   float h = dht.readHumidity();         //Leitura do valor de umidade
   lcd.setCursor(0,0);                   //Posiciona o cursor no canto superior esquerdo do display
@@ -38,13 +38,13 @@ void loop() {
   lcd.print("C");                       //Mostra o símbolo da unidade Celsius
 
  
-lcd.setCursor(0,1);                     //Posiciona o cursor no canto inferior esquerdo do display
-lcd.print("Umid: ");                   //
-lcd.print(" ");                         //Adiciona um caractere de espaço
-lcd.setCursor(7,1);                     //Posiciona a informação de umidade aferida pelo sensor
-lcd.print(h,1);                         //Inclui a informação de umidade aferida pelo sensor
-lcd.setCursor(12,1);                    //Posiciona o símbolo de porcentagem
-lcd.print("%");                         //Mostra o símbolo de porcentagem de umidade
+  lcd.setCursor(0,1);                     //Posiciona o cursor no canto inferior esquerdo do display
+  lcd.print("Umid: ");                   //
+  lcd.print(" ");                         //Adiciona um caractere de espaço
+  lcd.setCursor(7,1);                     //Posiciona a informação de umidade aferida pelo sensor
+  lcd.print(h,1);                         //Inclui a informação de umidade aferida pelo sensor
+  lcd.setCursor(12,1);                    //Posiciona o símbolo de porcentagem
+  lcd.print("%");                         //Mostra o símbolo de porcentagem de umidade
  
-delay(1000);                            //Intervalo de leitura do sensor
+  delay(1000);                            //Intervalo de leitura do sensor
 }
